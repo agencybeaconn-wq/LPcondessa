@@ -253,9 +253,9 @@ a{color:inherit}
 
 <section class="hero">
   <div class="hero__v">
-    <video autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="midia/w-poster.jpg">
-      <source src="midia/gel-hero-h264.mp4" type="video/mp4">
-    </video>
+    <video id="heroVideo" autoplay muted loop playsinline webkit-playsinline preload="auto"
+           disablepictureinpicture poster="midia/w-poster.jpg"
+           data-desktop="midia/gel-hero-h264.mp4" data-mobile="midia/gel-hero-mob.mp4"></video>
   </div>
   <header class="hdr"><div class="wrap hdr__in">
     <a class="logo" href="#topo">Condessa<span>Beauty</span></a>
@@ -631,8 +631,43 @@ a{color:inherit}
     medir(); aplicar();
   }
 
-  var vid=document.querySelector('.hero video');
-  if(vid) new IntersectionObserver(function(e){ e[0].isIntersecting?vid.play().catch(function(){}):vid.pause(); },{threshold:.05}).observe(vid);
+  /* Vídeo do hero à prova de bloqueio de autoplay (iOS Safari, baixo consumo, reduzir movimento) */
+  var vid=document.getElementById('heroVideo');
+  if(vid){
+    var leve = window.matchMedia('(max-width: 999px)').matches;
+    vid.muted=true; vid.defaultMuted=true; vid.playsInline=true; vid.loop=true;
+    vid.setAttribute('muted','');
+    vid.src = leve ? vid.dataset.mobile : vid.dataset.desktop;
+    vid.load();
+
+    var tentar=function(){ var p=vid.play(); if(p&&p.catch) p.catch(function(){}); };
+    ['loadedmetadata','loadeddata','canplay','canplaythrough','stalled','suspend'].forEach(function(ev){
+      vid.addEventListener(ev,tentar);
+    });
+    document.addEventListener('visibilitychange',function(){ if(!document.hidden) tentar(); });
+
+    /* se o navegador bloquear, o primeiro toque destrava */
+    var destravar=function(){ tentar(); if(!vid.paused) limpar(); };
+    var limpar=function(){
+      ['touchstart','pointerdown','click','scroll','keydown'].forEach(function(ev){
+        window.removeEventListener(ev,destravar);
+      });
+    };
+    ['touchstart','pointerdown','click','scroll','keydown'].forEach(function(ev){
+      window.addEventListener(ev,destravar,{passive:true});
+    });
+
+    /* insiste por 6s; se nem assim rodar, o poster fica como imagem fixa */
+    var t=0, relogio=setInterval(function(){
+      t++; if(vid.paused) tentar();
+      if(t>12 || (!vid.paused && vid.currentTime>0.3)) clearInterval(relogio);
+    },500);
+
+    /* pausa só quando sai totalmente da tela, e retoma ao voltar */
+    new IntersectionObserver(function(e){
+      if(e[0].isIntersecting) tentar(); else vid.pause();
+    },{threshold:0}).observe(vid);
+  }
 })();
 </script>
 </body>
