@@ -1,0 +1,7 @@
+midia/_fonte/
+midia/*.txt
+midia/scan/
+midia/fb/
+preview.jpg
+server.log
+node_modules/

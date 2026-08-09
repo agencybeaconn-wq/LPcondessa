@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Condessa Beauty</title>
+<meta name="description" content="Gel 3 em 1 Condessa Beauty: fixa, nutre e hidrata o fio da sobrancelha. Marca própria do Condessa Beauty Studio, em Ipatinga.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%236B4A31'/%3E%3Ctext x='16' y='23' font-family='serif' font-size='19' fill='%23FAF8F5' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font:'Outfit',system-ui,sans-serif;
+  --bg:#FAF8F5; --surface:#FFF; --ink:#1C1A18; --muted:#736C65;
+  --accent:#6B4A31; --accent-2:#543926; --line:#E6E0D9; --dark:#1A1715; --wa:#25D366;
+  --pad:clamp(20px,5vw,72px); --sec:clamp(72px,10vw,140px);
+  --max:1280px; --dur:.55s; --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+html{scroll-behavior:smooth;text-rendering:optimizeLegibility}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.62 var(--font);overflow-x:hidden}
+img,video{display:block;max-width:100%;height:auto}
+h1,h2,h3{margin:0;font-weight:300;line-height:1.05;letter-spacing:-.035em}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+.sec{padding-block:var(--sec)}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);font-weight:400;margin-bottom:22px}
+.lead{color:var(--muted);max-width:52ch;font-size:clamp(16px,1.15vw,18px);font-weight:400}
+.big{font-size:clamp(40px,7.2vw,104px)}
+.mid{font-size:clamp(30px,4.4vw,60px)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;background:var(--accent);color:#fff;
+  font:400 13px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;padding:20px 34px;border:0;text-decoration:none;cursor:pointer;
+  transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.btn:hover{background:var(--accent-2);transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn svg{width:17px;height:17px;fill:currentColor;flex:none}
+.btn--light{background:#fff;color:var(--dark)} .btn--light:hover{background:#EFE7DF}
+.btn--wa{background:var(--wa);color:#0B2E17} .btn--wa:hover{background:#1FBA59}
+.btn--xl{padding:26px 44px;font-size:15px;letter-spacing:.1em;width:100%}
+.btn--xl svg{width:24px;height:24px}
+.btn--ghost{background:transparent;color:currentColor;padding:14px 0;letter-spacing:.06em;text-transform:none;font-size:15px;border-bottom:1px solid currentColor}
+.btn--ghost:hover{background:transparent;transform:none;opacity:.6}
+
+.announce{background:var(--dark);color:#EFE7DF;text-align:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:13px 16px}
+.announce [data-s]{display:none} .announce [data-s].on{display:block}
+
+.hdr{position:absolute;top:44px;left:0;right:0;z-index:30}
+.hdr__in{display:flex;align-items:center;justify-content:space-between}
+.logo{text-decoration:none;font-size:14px;letter-spacing:.34em;text-transform:uppercase;color:#fff}
+.logo span{display:block;font-size:8px;letter-spacing:.42em;opacity:.6;margin-top:5px}
+.hdr .btn{padding:14px 24px;font-size:11px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3)}
+.hdr .btn:hover{background:#fff;color:var(--dark)}
+
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:var(--dark)}
+.hero__v{position:absolute;inset:0}
+.hero__v video{width:100%;height:100%;object-fit:cover}
+.hero__v::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,23,21,.6) 0%,rgba(26,23,21,.12) 30%,rgba(26,23,21,.5) 66%,rgba(26,23,21,.93) 100%)}
+.hero__in{position:relative;z-index:2;width:100%;color:#fff;padding-bottom:clamp(48px,7vw,88px)}
+.hero h1{max-width:14ch;margin-bottom:26px}
+.hero h1 em{font-style:normal;display:block;color:#E6CDB4}
+.hero__sub{max-width:44ch;color:rgba(255,255,255,.84);font-size:clamp(16px,1.3vw,20px);margin-bottom:38px}
+
+.band{background:var(--dark);color:#EFE7DF;overflow:hidden;padding-block:26px;border-block:1px solid rgba(255,255,255,.08)}
+.band__t{display:flex;width:max-content;will-change:transform;animation:slide 30s linear infinite}
+.band__g{display:flex;flex:none}
+.band__i{padding-right:64px;white-space:nowrap;font-size:clamp(26px,3.6vw,46px);font-weight:200;letter-spacing:-.02em;opacity:.34}
+.band__i.on{opacity:1}
+@keyframes slide{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+.banner{position:relative;display:flex;align-items:center;min-height:clamp(420px,58vw,620px);overflow:hidden;background:#EFE9E1}
+.banner__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.banner__in{position:relative;z-index:2;max-width:var(--max);width:100%}
+.banner__in>*{max-width:min(46ch,52%)}
+.banner__sub{color:var(--muted);font-size:clamp(16px,1.15vw,18px);margin:20px 0 32px;font-weight:400}
+
+.ed{position:relative;margin:0}
+.ed img{width:100%;height:clamp(420px,74vh,800px);object-fit:cover;object-position:center 35%}
+.ed figcaption{position:absolute;left:var(--pad);bottom:clamp(24px,3vw,44px);color:#fff;max-width:34ch;font-size:clamp(15px,1.15vw,18px);text-shadow:0 1px 22px rgba(0,0,0,.6)}
+
+.tri{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,64px);margin-top:clamp(40px,5vw,72px)}
+.tri__n{font-size:11px;letter-spacing:.24em;color:var(--accent);margin-bottom:20px}
+.tri h3{font-size:clamp(22px,2vw,28px);margin-bottom:14px}
+.tri p{color:var(--muted);font-size:16px;font-weight:400}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,96px);align-items:center}
+.split--flip .split__m{order:2}
+.split__m img{width:100%;aspect-ratio:4/5;object-fit:cover;max-height:min(76vh,700px)}
+.split h2{margin-bottom:24px}
+
+.feed__h{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.feed{overflow:hidden;margin-top:clamp(30px,3.4vw,46px);--peq:clamp(150px,17vw,240px);--gra:clamp(280px,38vw,540px);--esp:12px}
+.feed__t{display:flex;align-items:center;gap:var(--esp);transition:transform .6s var(--ease)}
+.feed a{flex:0 0 auto;display:block;overflow:hidden;position:relative;width:var(--peq);
+  transition:opacity .5s var(--ease);opacity:.5}
+.feed a.ativo{width:var(--gra);opacity:1}
+.feed img{width:100%;aspect-ratio:1;object-fit:cover}
+.feed a:hover{opacity:1}
+.feed a::after{content:'';position:absolute;inset:0;background:rgba(26,23,21,0);transition:background var(--dur) var(--ease)}
+.feed a:hover::after{background:rgba(26,23,21,.1)}
+.feed__dica{margin-top:16px;font-size:12px;color:var(--muted);letter-spacing:.04em}
+.feed__wrap{position:relative}
+.seta{position:absolute;top:calc(50% - 14px);transform:translateY(-50%);z-index:5;width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.94);border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;
+  box-shadow:0 6px 24px rgba(28,26,24,.12);transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.seta:hover{background:#fff;transform:translateY(-50%) scale(1.06)}
+.seta:active{transform:translateY(-50%) scale(.97)}
+.seta svg{width:18px;height:18px;fill:none;stroke:var(--ink);stroke-width:1.5}
+.seta--ant{left:-14px} .seta--prox{right:-14px}
+.seta[disabled]{opacity:.3;cursor:default}
+
+.q{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.4vw,34px);margin-top:clamp(40px,5vw,64px)}
+.q__c{background:var(--surface);border:1px solid var(--line);padding:clamp(26px,2.6vw,38px);display:flex;flex-direction:column;gap:18px}
+.q__c p{font-size:clamp(17px,1.4vw,21px);line-height:1.4;letter-spacing:-.015em}
+.q__c cite{font-style:normal;font-size:13px;color:var(--muted);margin-top:auto}
+.q__src{margin-top:26px;font-size:12px;color:var(--muted)}
+.q__c--print{padding:0;overflow:hidden}
+.q__c--print img{width:100%;border-bottom:1px solid var(--line)}
+.q__c--print p{padding:clamp(22px,2.2vw,30px) clamp(24px,2.4vw,34px) 0}
+.q__c--print cite{padding:0 clamp(24px,2.4vw,34px) clamp(24px,2.4vw,32px)}
+
+/* prints de feedback */
+.fb{background:var(--surface);border-block:1px solid var(--line)}
+.fb__track{overflow:hidden;margin-top:clamp(36px,4vw,56px);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.fb__t{display:flex;width:max-content;will-change:transform;animation:slidefb 60s linear infinite}
+.fb__t:hover{animation-play-state:paused}
+.fb__g{display:flex;flex:none}
+.fb__g img{height:clamp(520px,78vh,860px);width:auto;margin-right:22px;border:1px solid var(--line);background:#fff}
+@keyframes slidefb{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+.stu{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,26px);margin-top:clamp(36px,4vw,60px)}
+.stu figure{margin:0}
+.stu img{width:100%;aspect-ratio:1;object-fit:cover}
+.stu figcaption{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:14px}
+.nota{margin-top:32px;font-size:13px;color:var(--muted);max-width:74ch;padding-left:16px;border-left:1px solid var(--line)}
+
+/* card de compra */
+.buy{background:var(--dark);color:#EFE7DF}
+.buy__in{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.buy__img{background:#22201D;padding:clamp(20px,3vw,40px)}
+.buy__img img{width:100%;aspect-ratio:1;object-fit:cover}
+.buy h2{color:#fff;font-size:clamp(28px,3.4vw,46px);margin-bottom:10px}
+.buy__marca{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#E6CDB4;margin-bottom:18px}
+.buy__desc{color:rgba(239,231,223,.66);max-width:44ch;margin-bottom:30px}
+.buy__preco{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+.buy__preco b{font-size:clamp(38px,4.6vw,60px);font-weight:200;letter-spacing:-.03em;color:#fff}
+.buy__preco span{font-size:13px;color:rgba(239,231,223,.5);letter-spacing:.1em;text-transform:uppercase}
+.buy__nota{font-size:13px;color:rgba(239,231,223,.5);margin-bottom:26px}
+
+/* loja física */
+.loja__card{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);background:var(--surface);margin-top:clamp(36px,4vw,56px);overflow:hidden}
+.loja__foto{position:relative;min-height:320px}
+.loja__foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.loja__info{padding:clamp(28px,3.4vw,52px)}
+.pin{display:flex;gap:16px;align-items:flex-start;margin-bottom:26px}
+.pin__ic{width:46px;height:46px;flex:none;border-radius:50%;background:#F1EBE4;display:grid;place-items:center}
+.pin__ic svg{width:22px;height:22px;fill:var(--accent)}
+.pin__t{display:block;font-size:clamp(18px,1.5vw,21px);line-height:1.35}
+.pin__s{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.mapa{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:24px}
+.mapa svg{width:16px;height:16px;fill:currentColor}
+.mapa:hover{opacity:.7}
+.horario{display:grid;gap:12px;margin-bottom:30px;font-size:15px;color:var(--muted)}
+.horario b{color:var(--ink);font-weight:400}
+
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;padding:clamp(22px,2.2vw,30px) 0;font-size:clamp(18px,1.6vw,23px);display:flex;justify-content:space-between;gap:28px;align-items:center;letter-spacing:-.02em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'';width:11px;height:11px;flex:none;border-right:1px solid var(--accent);border-bottom:1px solid var(--accent);transform:rotate(45deg);transition:transform var(--dur) var(--ease)}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq details p{padding-bottom:28px;color:var(--muted);max-width:62ch;font-size:16px;font-weight:400}
+
+/* rodapé */
+.foot{background:var(--dark);color:#EFE7DF}
+.foot__top{text-align:center;padding-bottom:clamp(40px,5vw,64px);border-bottom:1px solid rgba(255,255,255,.1)}
+.foot__top h2{color:#fff;margin-bottom:18px}
+.foot__top p{color:rgba(239,231,223,.6);max-width:44ch;margin:0 auto 32px}
+.ig{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.8vw,24px);margin-top:clamp(40px,5vw,64px)}
+.ig__c{display:flex;gap:16px;align-items:center;padding:clamp(20px,2.2vw,28px);border:1px solid rgba(255,255,255,.14);text-decoration:none;
+  transition:background var(--dur) var(--ease),transform var(--dur) var(--ease)}
+.ig__c:hover{background:rgba(255,255,255,.06);transform:translateY(-3px)}
+.ig__ic{width:44px;height:44px;flex:none;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(45deg,#F09433,#E6683C 25%,#DC2743 50%,#CC2366 75%,#BC1888)}
+.ig__ic svg{width:22px;height:22px;fill:#fff}
+.ig__h{font-size:15px;color:#fff}
+.ig__d{font-size:12px;color:rgba(239,231,223,.55);margin-top:3px}
+.foot__bot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-block:30px;font-size:12px;color:rgba(239,231,223,.42)}
+
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none;padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:#FAF8F5;border-top:1px solid var(--line);transform:translate3d(0,110%,0);transition:transform var(--dur) var(--ease)}
+.sticky.on{transform:translate3d(0,0,0)}
+.sticky .btn{width:100%}
+
+/* sem reveal on scroll: animar texto promove camada de GPU e borra a fonte */
+
+@media (max-width:999px){
+  .hdr{top:26px} .hdr .btn{display:none}
+  .hero{min-height:92svh} .hero h1{max-width:12ch}
+  .split,.loja__card,.buy__in{grid-template-columns:1fr;gap:0}
+  .split{gap:36px}
+  .split--flip .split__m{order:0}
+  .buy__in{gap:32px}
+  .tri{grid-template-columns:1fr;gap:38px}
+  .q,.ig{grid-template-columns:1fr}
+  .stu{grid-template-columns:1fr 1fr}
+  .stu figure:nth-child(3){grid-column:span 2}
+  .stu figure:nth-child(3) img{aspect-ratio:16/10}
+  .feed{grid-template-columns:repeat(3,1fr)}
+  .fb__row{grid-template-columns:repeat(2,1fr)}
+  .fb__row img:nth-child(5){grid-column:span 2;aspect-ratio:16/10}
+  .ed img{height:58vh}
+  .banner{min-height:auto;flex-direction:column;align-items:stretch}
+  .banner__bg{position:relative;height:auto;aspect-ratio:3/2}
+  .banner__in{padding-block:clamp(32px,6vw,56px);background:var(--bg)}
+  .banner__in>*{max-width:100%}
+  .loja__foto{min-height:260px}
+  .sticky{display:block}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}[data-rv]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div class="announce" id="an">
+  <div data-s class="on">Marca própria do Condessa Beauty Studio</div>
+  <div data-s>Loja física em Ipatinga · Minas Gerais</div>
+  <div data-s>Criado por quem faz sobrancelha todos os dias</div>
+</div>
+
+<section class="hero">
+  <div class="hero__v">
+    <video autoplay muted loop playsinline preload="auto" disablepictureinpicture poster="midia/w-poster.jpg">
+      <source src="midia/gel-hero-h264.mp4" type="video/mp4">
+    </video>
+  </div>
+  <header class="hdr"><div class="wrap hdr__in">
+    <a class="logo" href="#topo">Condessa<span>Beauty</span></a>
+    <a class="btn" href="#" data-cta>Falar no WhatsApp</a>
+  </div></header>
+  <div class="wrap hero__in" id="topo">
+    <p class="eyebrow" style="color:#E6CDB4">Gel 3 em 1 · Sobrancelha</p>
+    <h1 class="big">Um gel.<em>Três funções.</em></h1>
+    <p class="hero__sub">Fixa, nutre e hidrata o fio da sobrancelha — numa passada só. Desenvolvido dentro do studio, por quem trabalha com sobrancelha todos os dias.</p>
+    <a class="btn btn--light" href="#produto">Conhecer o produto</a>
+  </div>
+</section>
+
+<div class="band"><div class="band__t" id="band">
+  <div class="band__g">
+    <span class="band__i on">FIXA</span><span class="band__i">·</span><span class="band__i on">NUTRE</span><span class="band__i">·</span><span class="band__i on">HIDRATA</span><span class="band__i">·</span>
+    <span class="band__i on">FIXA</span><span class="band__i">·</span><span class="band__i on">NUTRE</span><span class="band__i">·</span><span class="band__i on">HIDRATA</span><span class="band__i">·</span>
+  </div>
+  <div class="band__g" aria-hidden="true">
+    <span class="band__i on">FIXA</span><span class="band__i">·</span><span class="band__i on">NUTRE</span><span class="band__i">·</span><span class="band__i on">HIDRATA</span><span class="band__i">·</span>
+    <span class="band__i on">FIXA</span><span class="band__i">·</span><span class="band__i on">NUTRE</span><span class="band__i">·</span><span class="band__i on">HIDRATA</span><span class="band__i">·</span>
+  </div>
+</div></div>
+
+<main>
+
+  <section class="wrap sec" id="produto">
+    <div data-rv>
+      <p class="eyebrow">O que ele faz</p>
+      <h2 class="mid">Três coisas que normalmente<br>pedem três produtos.</h2>
+    </div>
+    <div class="tri" data-rv>
+      <div><div class="tri__n">01 / FIXA</div><h3>O fio fica onde<br>você colocou</h3>
+        <p>Penteia e mantém o desenho da sobrancelha ao longo do dia — sem a sensação de casquinha dura que trava o fio.</p></div>
+      <div><div class="tri__n">02 / NUTRE</div><h3>Cuidado<br>enquanto fixa</h3>
+        <p>Diferente de um fixador comum, que só cria uma película por cima, ele trabalha o fio enquanto segura o formato.</p></div>
+      <div><div class="tri__n">03 / HIDRATA</div><h3>Fio maleável,<br>não ressecado</h3>
+        <p>A sobrancelha continua macia e com aspecto natural. Nada de fio quebradiço, opaco ou endurecido.</p></div>
+    </div>
+  </section>
+
+  <section class="banner">
+    <img class="banner__bg" src="midia/w-banner.jpg" alt="Pote do Gel 3 em 1 Condessa Beauty sobre superfície clara" width="1600" height="1067">
+    <div class="wrap banner__in">
+      <p class="eyebrow">Marca própria</p>
+      <h2 class="mid">Feito dentro<br>do studio.</h2>
+      <p class="banner__sub">Desenvolvido por quem trabalha com sobrancelha todos os dias — e testado no atendimento antes de virar produto.</p>
+      <a class="btn" href="#comprar">Ver o produto</a>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <div class="feed__h">
+      <div>
+        <p class="eyebrow">No Instagram</p>
+        <h2 class="mid">O dia a dia<br>do studio.</h2>
+      </div>
+      <a class="btn btn--ghost" href="https://www.instagram.com/condessabeautystudio/" target="_blank" rel="noopener">@condessabeautystudio</a>
+    </div>
+    <div class="feed__wrap">
+    <button class="seta seta--ant" id="feedAnt" aria-label="Post anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="seta seta--prox" id="feedProx" aria-label="Próximo post"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="feed"><div class="feed__t" id="feed">
+      <a href="https://www.instagram.com/p/DZ0CGNslpgU/" target="_blank" rel="noopener"><img src="midia/gn1.jpg" alt="Resultado de sobrancelha no Condessa Beauty Studio" width="900" height="900"></a>
+      <a href="https://www.instagram.com/p/DWJ6zSzkco7/" target="_blank" rel="noopener"><img src="midia/gn2.jpg" alt="Trabalho de sobrancelha como identidade, no studio" width="900" height="900"></a>
+      <a href="https://www.instagram.com/p/DWPKioqERh2/" target="_blank" rel="noopener"><img src="midia/gn3.jpg" alt="Brow lamination levantando o olhar" width="900" height="900"></a>
+      <a href="https://www.instagram.com/p/DTQcoKMDosT/" target="_blank" rel="noopener"><img src="midia/gn4.jpg" alt="Olhar após brow lamination no studio" width="900" height="900"></a>
+      <a href="https://www.instagram.com/p/DSVhfqFD1YX/" target="_blank" rel="noopener"><img src="midia/gn5.jpg" alt="Design estratégico de sobrancelha" width="900" height="900"></a>
+      <a href="https://www.instagram.com/p/DUMAbKKDoOX/" target="_blank" rel="noopener"><img src="midia/gn6.jpg" alt="Nanofios com fios realistas no Condessa Beauty Studio" width="900" height="900"></a>
+    </div></div>
+    </div>
+    <p class="feed__dica">Use as setas para navegar · clique na foto para abrir no Instagram</p>
+  </section>
+
+  <section class="wrap sec split" style="padding-top:0">
+    <div class="split__m"><img src="midia/w4-studio-browlash.jpg" alt="Antes e depois de sobrancelha no Condessa Beauty Studio" width="600" height="750"></div>
+    <div>
+      <p class="eyebrow">Por que existe</p>
+      <h2 class="mid">Nasceu de um problema<br>que a gente via todo dia.</h2>
+      <p class="lead" style="margin-top:24px">Sobrancelha bem desenhada não se sustenta sozinha. O fio sai do lugar, resseca, perde o brilho — e o desenho que custou uma sessão inteira dura poucas horas. O Gel 3 em 1 foi feito pra resolver isso numa passada: segura o formato e cuida do fio ao mesmo tempo.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec" style="padding-top:0">
+    <div data-rv>
+      <p class="eyebrow">Quem já usa</p>
+      <h2 class="mid">O que dizem<br>nos comentários.</h2>
+    </div>
+    <div class="q" data-rv>
+      <div class="q__c q__c--print">
+        <img src="midia/w-com1.jpg" alt="Comentário de @jhenefermaf no post do Gel 3 em 1: A MELHOR APRESENTANDO O MELHOR GEL" width="804" height="268">
+        <p>“A melhor apresentando o melhor gel.”</p><cite>@jhenefermaf</cite>
+      </div>
+      <div class="q__c q__c--print">
+        <img src="midia/w-com2.jpg" alt="Comentário de @leticiamorais._ no post do Gel 3 em 1: Eu amo o meu" width="804" height="232">
+        <p>“Eu amo o meu.”</p><cite>@leticiamorais._</cite>
+      </div>
+      <div class="q__c"><p>“Gel 3 em 1 da Condessa Beauty é o melhor — eu posso provar.”</p><cite>Tamires Condessa</cite></div>
+    </div>
+    <p class="q__src" data-rv>Comentários publicados no Instagram da marca, transcritos sem edição de conteúdo.</p>
+  </section>
+
+  <section class="fb">
+    <div class="wrap sec">
+      <div data-rv>
+        <p class="eyebrow">Feedbacks</p>
+        <h2 class="mid">Mensagens de quem<br>compra na loja.</h2>
+        <p class="lead" style="margin-top:24px">Prints publicados pela própria Condessa Beauty Shop nos destaques do Instagram.</p>
+        <a class="btn btn--ghost" href="https://www.instagram.com/stories/highlights/17856697428221347/" target="_blank" rel="noopener" style="margin-top:18px">Ver o destaque “Feedbacks” no Instagram</a>
+      </div>
+      <div class="fb__track">
+        <div class="fb__t" id="fbt">
+          <div class="fb__g">
+            <img src="midia/w-fb1.jpg" alt="Feedback de cliente publicado nos destaques da Condessa Beauty Shop" width="520" height="924">
+            <img src="midia/w-fb2.jpg" alt="Mensagem de cliente sobre a Condessa Beauty Shop" width="520" height="924">
+            <img src="midia/w-fb3.jpg" alt="Conversa de cliente elogiando os produtos da loja" width="520" height="924">
+            <img src="midia/w-fb4.jpg" alt="Cliente comentando sobre a loja" width="520" height="924">
+            <img src="midia/w-fb5.jpg" alt="Cliente com a sacola da Condessa Beauty Shop" width="520" height="924">
+          </div>
+          <div class="fb__g" aria-hidden="true">
+            <img src="midia/w-fb1.jpg" alt="" width="760" height="1351">
+            <img src="midia/w-fb2.jpg" alt="" width="760" height="1351">
+            <img src="midia/w-fb3.jpg" alt="" width="760" height="1351">
+            <img src="midia/w-fb4.jpg" alt="" width="760" height="1351">
+            <img src="midia/w-fb5.jpg" alt="" width="760" height="1351">
+          </div>
+        </div>
+      </div>
+      <p class="nota">Feedbacks sobre o atendimento e os produtos da loja como um todo — não são especificamente sobre o Gel 3 em 1.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec split split--flip">
+    <div class="split__m"><img src="midia/w-tamires.jpg" alt="Tamires Condessa no Condessa Beauty Studio, em Ipatinga" width="1000" height="1250"></div>
+    <div data-rv>
+      <p class="eyebrow">A fundadora</p>
+      <h2 class="mid">Tamires<br>Condessa</h2>
+      <p class="lead" style="margin-top:24px">Especialista em sobrancelhas e dona do Condessa Beauty Studio, em Ipatinga. São mais de mil publicações de trabalho técnico — design, visagismo, nanofios, brow lamination — e 32 mil pessoas acompanhando a rotina do studio de perto.</p>
+      <blockquote style="margin:32px 0 0;padding-left:20px;border-left:1px solid var(--line);font-size:clamp(18px,1.6vw,22px);line-height:1.45;letter-spacing:-.02em">
+        “Amo que, através do meu trabalho, eu consigo transcender tudo isso em cada uma de vocês. Mulheres fortes, batalhadoras, persistentes, seguras, que se cuidam e se amam.”
+        <cite style="display:block;font-style:normal;font-size:13px;color:var(--muted);margin-top:16px">Tamires Condessa</cite>
+      </blockquote>
+      <a class="btn btn--ghost" href="https://www.instagram.com/tamirescondessa/" target="_blank" rel="noopener" style="margin-top:30px">Ver o perfil no Instagram</a>
+    </div>
+  </section>
+
+  <section class="wrap sec" style="padding-top:0">
+    <div data-rv>
+      <p class="eyebrow">O studio por trás do produto</p>
+      <h2 class="mid">Quem faz sobrancelha todos os dias<br>criou o próprio gel.</h2>
+    </div>
+    <div class="stu" data-rv>
+      <figure><img src="midia/f1.jpg" alt="Design de sobrancelha no Condessa Beauty Studio" width="600" height="600"><figcaption>Design estratégico</figcaption></figure>
+      <figure><img src="midia/f3.jpg" alt="Antes e depois de brow e lash no Condessa Beauty Studio" width="600" height="600"><figcaption>Brow &amp; Lash</figcaption></figure>
+      <figure><img src="midia/f2.jpg" alt="Brow lamination no Condessa Beauty Studio" width="600" height="600"><figcaption>Brow lamination</figcaption></figure>
+    </div>
+    <p class="nota">Atendimentos reais no studio — design, brow &amp; lash e brow lamination. O Gel 3 em 1 entra no acabamento desses procedimentos: é ele que fixa o desenho no fim.</p>
+  </section>
+
+  <!-- CARD DE COMPRA: nome + foto + preço -->
+  <section class="buy" id="comprar">
+    <div class="wrap sec buy__in">
+      <div class="buy__img">
+        <img src="midia/w-pote.jpg" alt="Gel 3 em 1 Condessa Beauty — pote branco com tampa dourada" width="1000" height="1000">
+      </div>
+      <div data-rv>
+        <p class="buy__marca">Condessa Beauty</p>
+        <h2>Gel 3 em 1<br>para sobrancelha</h2>
+        <p class="buy__desc" style="margin-top:18px">Fixa, nutre e hidrata o fio numa passada só. Uso diário, mantém o desenho do design entre uma manutenção e outra.</p>
+        <div class="buy__preco"><b>R$ 29,99</b><span>à vista</span></div>
+        <p class="buy__nota">Pedido pelo WhatsApp ou retirada na loja, em Ipatinga.</p>
+        <a class="btn btn--wa btn--xl" href="#" data-cta>
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.1-.7-2.6-1-4.3-3.7-4.4-3.9-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3.1.1.1.6-.1 1.4Z"/></svg>
+          Pedir no WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOJA FÍSICA -->
+  <section class="wrap sec">
+    <div data-rv>
+      <p class="eyebrow">Onde encontrar</p>
+      <h2 class="mid">A loja fica<br>no Centro de Ipatinga.</h2>
+    </div>
+    <div class="loja__card" data-rv>
+      <div class="loja__foto"><img src="midia/w-loja.jpg" alt="Interior da Condessa Beauty Shop, em Ipatinga" width="900" height="600"></div>
+      <div class="loja__info">
+        <div class="pin">
+          <span class="pin__ic"><svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v9h6v-6h2v6h6v-9h3L12 3Z"/></svg></span>
+          <span>
+            <span class="pin__t">Rua Belo Horizonte, 273</span>
+            <span class="pin__s">Centro — Ipatinga, MG</span>
+          </span>
+        </div>
+        <a class="mapa" href="https://www.google.com/maps/search/?api=1&query=Rua+Belo+Horizonte+273+Centro+Ipatinga+MG" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+          Ver no Google Maps
+        </a>
+        <div class="horario">
+          <div><b>Retirada na loja</b> — leve o pedido na hora, sem frete.</div>
+          <div><b>Atendimento por WhatsApp</b> — direto com a equipe da Condessa Beauty Shop.</div>
+        </div>
+        <a class="btn btn--wa btn--xl" href="#" data-cta>
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.1-.7-2.6-1-4.3-3.7-4.4-3.9-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3.1.1.1.6-.1 1.4Z"/></svg>
+          Falar com a loja
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap sec" style="padding-top:0">
+    <div data-rv style="margin-bottom:clamp(28px,3vw,48px)">
+      <p class="eyebrow">Dúvidas</p>
+      <h2 class="mid">Perguntas rápidas.</h2>
+    </div>
+    <div class="faq" data-rv>
+      <details open><summary>Ele deixa a sobrancelha dura?</summary><p>Não é essa a proposta. O gel foi pensado para fixar mantendo o fio maleável — por isso ele também nutre e hidrata, em vez de apenas segurar.</p></details>
+      <details><summary>Serve pra quem fez nanofios ou brow lamination?</summary><p>Sim, é justamente quem mais usa. O gel ajuda a manter o desenho do procedimento no lugar entre uma manutenção e outra.</p></details>
+      <details><summary>Dá pra usar todos os dias?</summary><p>Sim. Ele foi pensado para uso diário — é o passo que mantém o desenho da sobrancelha de pé no dia a dia.</p></details>
+      <details><summary>Como eu faço o pedido?</summary><p>Direto pelo WhatsApp da Condessa Beauty Shop. Qualquer botão desta página abre a conversa com a mensagem já preenchida. Ou passe na loja, na Rua Belo Horizonte, 273, Centro de Ipatinga.</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap sec">
+    <div class="foot__top" data-rv>
+      <h2 class="mid">A sobrancelha no lugar.<br>O fio bem cuidado.</h2>
+      <p>Um gel só, três funções. Feito dentro de um studio que faz sobrancelha todos os dias.</p>
+      <a class="btn btn--wa" href="#" data-cta style="padding:24px 40px;font-size:14px">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm5.5 14.1c-.2.6-1.2 1.2-1.7 1.2-.4 0-1 .1-3.1-.7-2.6-1-4.3-3.7-4.4-3.9-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.3.3c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.4.1.6-.1l.8-1c.2-.2.4-.2.6-.1l2 .9c.2.1.4.2.4.3.1.1.1.6-.1 1.4Z"/></svg>
+        Pedir meu Gel 3 em 1 · R$ 29,99
+      </a>
+    </div>
+
+    <div class="ig" data-rv>
+      <a class="ig__c" href="https://www.instagram.com/condessabshop/" target="_blank" rel="noopener">
+        <span class="ig__ic"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1Zm0 3.8a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm0 9.9a3.9 3.9 0 1 1 0-7.8 3.9 3.9 0 0 1 0 7.8Zm7.6-10.1a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0Z"/></svg></span>
+        <span><span class="ig__h">@condessabshop</span><span class="ig__d">A loja — produtos e pedidos</span></span>
+      </a>
+      <a class="ig__c" href="https://www.instagram.com/condessabeautystudio/" target="_blank" rel="noopener">
+        <span class="ig__ic"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1Zm0 3.8a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm0 9.9a3.9 3.9 0 1 1 0-7.8 3.9 3.9 0 0 1 0 7.8Zm7.6-10.1a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0Z"/></svg></span>
+        <span><span class="ig__h">@condessabeautystudio</span><span class="ig__d">O studio — sobrancelha e beleza</span></span>
+      </a>
+      <a class="ig__c" href="https://www.instagram.com/tamirescondessa/" target="_blank" rel="noopener">
+        <span class="ig__ic"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4 1.3-.1 1.7-.1 4.9-.1Zm0 3.8a6 6 0 1 0 0 12 6 6 0 0 0 0-12Zm0 9.9a3.9 3.9 0 1 1 0-7.8 3.9 3.9 0 0 1 0 7.8Zm7.6-10.1a1.4 1.4 0 1 1-2.8 0 1.4 1.4 0 0 1 2.8 0Z"/></svg></span>
+        <span><span class="ig__h">@tamirescondessa</span><span class="ig__d">A fundadora — 32 mil seguidores</span></span>
+      </a>
+    </div>
+  </div>
+  <div class="wrap foot__bot">
+    <span>© <span id="y"></span> Condessa Beauty · Ipatinga, MG</span>
+    <span>Rua Belo Horizonte, 273 — Centro</span>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a class="btn btn--wa" href="#" data-cta>Pedir no WhatsApp · R$ 29,99</a></div>
+
+<script>
+(function(){
+  var WA='https://wa.me/5531992489081?text='+encodeURIComponent('Olá Condessa Beauty! Quero pedir o Gel 3 em 1 ✨');
+  document.querySelectorAll('[data-cta]').forEach(function(a){ a.href=WA; a.target='_blank'; a.rel='noopener'; });
+  document.getElementById('y').textContent=new Date().getFullYear();
+  var red=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var s=document.querySelectorAll('#an [data-s]'),i=0;
+  if(s.length>1&&!red) setInterval(function(){s[i].classList.remove('on');i=(i+1)%s.length;s[i].classList.add('on');},4600);
+
+  var hero=document.querySelector('.hero'),bar=document.getElementById('sticky');
+  if(hero&&bar) new IntersectionObserver(function(e){bar.classList.toggle('on',!e[0].isIntersecting);},{rootMargin:'-90px 0px 0px 0px'}).observe(hero);
+
+  var band=document.getElementById('band');
+  if(band) new IntersectionObserver(function(e){ band.style.animationPlayState=e[0].isIntersecting?'running':'paused'; }).observe(band);
+
+  /* carrossel do feed: setas + centraliza a peça grande ao abrir */
+  var feed=document.getElementById('feed');
+  if(feed){
+    var ant=document.getElementById('feedAnt'), prox=document.getElementById('feedProx');
+    var janela=feed.parentElement;
+    var cards=Array.prototype.slice.call(feed.querySelectorAll('a'));
+    var idx=Math.floor(cards.length/2)-1; if(idx<0) idx=0;
+    var P=0,G=0,E=0;
+    var medir=function(){
+      cards.forEach(function(el,k){ el.classList.toggle('ativo', k===idx); });
+      var st=feed.style.transition; feed.style.transition='none';
+      cards.forEach(function(el){ el.style.transition='none'; });
+      P=cards[idx===0?1:0].offsetWidth;
+      G=cards[idx].offsetWidth;
+      E=parseFloat(getComputedStyle(feed).columnGap)||12;
+      feed.offsetHeight;
+      feed.style.transition=st;
+      cards.forEach(function(el){ el.style.transition=''; });
+    };
+    var aplicar=function(){
+      cards.forEach(function(el,k){ el.classList.toggle('ativo', k===idx); });
+      ant.disabled = idx<=0;
+      prox.disabled = idx>=cards.length-1;
+      var alvo = idx*(P+E) - (janela.clientWidth - G)/2;
+      feed.style.transform='translate3d('+(-alvo)+'px,0,0)';
+    };
+    var ir=function(d){ var n=idx+d; if(n>=0 && n<cards.length){ idx=n; aplicar(); } };
+    ant.addEventListener('click',function(){ ir(-1); });
+    prox.addEventListener('click',function(){ ir(1); });
+    /* arrastar com o dedo no mobile */
+    var x0=null;
+    janela.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+    janela.addEventListener('touchend',function(e){
+      if(x0===null) return;
+      var dx=e.changedTouches[0].clientX-x0; x0=null;
+      if(Math.abs(dx)>40) ir(dx<0?1:-1);
+    },{passive:true});
+    window.addEventListener('resize',function(){ medir(); aplicar(); });
+    medir(); aplicar();
+  }
+
+  var vid=document.querySelector('.hero video');
+  if(vid) new IntersectionObserver(function(e){ e[0].isIntersecting?vid.play().catch(function(){}):vid.pause(); },{threshold:.05}).observe(vid);
+})();
+</script>
+</body>
+</html>
