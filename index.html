@@ -80,6 +80,22 @@ a{color:inherit}
 .ed img{width:100%;height:clamp(420px,74vh,800px);object-fit:cover;object-position:center 35%}
 .ed figcaption{position:absolute;left:var(--pad);bottom:clamp(24px,3vw,44px);color:#fff;max-width:34ch;font-size:clamp(15px,1.15vw,18px);text-shadow:0 1px 22px rgba(0,0,0,.6)}
 
+/* seção detalhada: a ideia e a entrega */
+.det{background:var(--surface);border-block:1px solid var(--line)}
+.det__topo{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:end}
+.det__lista{margin:clamp(44px,5vw,72px) 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.det__lista li{display:grid;grid-template-columns:52px 1fr 1.15fr;gap:clamp(18px,3vw,44px);
+  padding-block:clamp(26px,2.8vw,38px);border-bottom:1px solid var(--line);align-items:start}
+.det__n{font-size:12px;letter-spacing:.18em;color:var(--accent);padding-top:6px}
+.det__t{font-size:clamp(19px,1.7vw,25px);line-height:1.2;letter-spacing:-.02em}
+.det__d{color:var(--muted);font-size:16px}
+.det__fecho{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);margin-top:clamp(44px,5vw,72px);align-items:center}
+.det__quadro{background:var(--bg);border:1px solid var(--line);padding:clamp(26px,3vw,42px)}
+.det__quadro dt{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.det__quadro dd{margin:0 0 22px;font-size:16px;color:var(--muted)}
+.det__quadro dd:last-child{margin-bottom:0}
+.det__quadro dd b{color:var(--ink);font-weight:400}
+
 .tri{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,64px);margin-top:clamp(40px,5vw,72px)}
 .tri__n{font-size:11px;letter-spacing:.24em;color:var(--accent);margin-bottom:20px}
 .tri h3{font-size:clamp(22px,2vw,28px);margin-bottom:14px}
@@ -214,10 +230,13 @@ a{color:inherit}
   .fb__row{grid-template-columns:repeat(2,1fr)}
   .fb__row img:nth-child(5){grid-column:span 2;aspect-ratio:16/10}
   .ed img{height:58vh}
-  .banner{min-height:auto;flex-direction:column;align-items:stretch}
-  .banner__bg{position:relative;height:auto;aspect-ratio:3/2}
-  .banner__in{padding-block:clamp(32px,6vw,56px);background:var(--bg)}
+  .banner{min-height:76svh;align-items:flex-start}
+  .banner__bg{object-position:center bottom}
+  .banner__in{padding-top:clamp(40px,10vw,72px)}
   .banner__in>*{max-width:100%}
+  .det__topo,.det__fecho{grid-template-columns:1fr;gap:24px}
+  .det__lista li{grid-template-columns:1fr;gap:12px}
+  .det__n{padding-top:0}
   .loja__foto{min-height:260px}
   .sticky{display:block}
 }
@@ -246,7 +265,7 @@ a{color:inherit}
     <p class="eyebrow" style="color:#E6CDB4">Gel 3 em 1 · Sobrancelha</p>
     <h1 class="big">Um gel.<em>Três funções.</em></h1>
     <p class="hero__sub">Fixa, nutre e hidrata o fio da sobrancelha, numa passada só. Desenvolvido dentro do studio, por quem trabalha com sobrancelha todos os dias.</p>
-    <a class="btn btn--light" href="#produto">Conhecer o produto</a>
+    <a class="btn btn--light" href="#sobre">Conhecer o produto</a>
   </div>
 </section>
 
@@ -279,12 +298,71 @@ a{color:inherit}
   </section>
 
   <section class="banner">
-    <img class="banner__bg" src="midia/w-banner.jpg" alt="Pote do Gel 3 em 1 Condessa Beauty sobre superfície clara" width="1600" height="1067">
+    <picture>
+      <source media="(max-width:999px)" srcset="midia/w-banner-mob.jpg">
+      <img class="banner__bg" src="midia/w-banner.jpg" alt="Pote do Gel 3 em 1 Condessa Beauty sobre superfície clara" width="1600" height="1067">
+    </picture>
     <div class="wrap banner__in">
       <p class="eyebrow">Marca própria</p>
       <h2 class="mid">Feito dentro<br>do studio.</h2>
       <p class="banner__sub">Desenvolvido por quem trabalha com sobrancelha todos os dias, e testado no atendimento antes de virar produto.</p>
       <a class="btn" href="#comprar">Ver o produto</a>
+    </div>
+  </section>
+
+  <section class="det" id="sobre">
+    <div class="wrap sec">
+      <div class="det__topo">
+        <div>
+          <p class="eyebrow">A ideia por trás</p>
+          <h2 class="mid">Um produto que nasceu<br>da cadeira do studio.</h2>
+        </div>
+        <p class="lead">Todo dia entra alguém no studio querendo a sobrancelha perfeita. E todo dia a mesma coisa acontecia depois: o desenho saía impecável dali, mas em dois ou três dias o fio já tinha voltado a fazer o que queria. O Gel 3 em 1 é a resposta pra esse intervalo, o tempo entre uma manutenção e outra.</p>
+      </div>
+
+      <ol class="det__lista">
+        <li>
+          <span class="det__n">01</span>
+          <h3 class="det__t">O problema que ninguém resolvia</h3>
+          <p class="det__d">Fixador de sobrancelha comum só sela o fio por cima. Segura no começo do dia, craquela no meio dele e ainda deixa o pelo ressecado com o uso contínuo. Quem faz design toda semana conhece esse ciclo: o fio endurece, quebra, e a falha aparece onde não tinha.</p>
+        </li>
+        <li>
+          <span class="det__n">02</span>
+          <h3 class="det__t">Por que três funções em um pote</h3>
+          <p class="det__d">A ideia foi juntar num gesto só o que antes exigia três produtos: o que fixa, o que nutre e o que hidrata. Não é conveniência de embalagem, é o que faz a fixação durar sem custo pro fio. O gel segura o desenho e continua trabalhando o pelo enquanto está lá.</p>
+        </li>
+        <li>
+          <span class="det__n">03</span>
+          <h3 class="det__t">A textura foi a parte difícil</h3>
+          <p class="det__d">Gel de sobrancelha erra por dois lados: ou é leve demais e não segura, ou é pesado e deixa a casquinha branca. O ponto certo é um gel translúcido, que espalha com a escovinha, entra no fio e some visualmente. É isso que permite usar todo dia sem parecer que tem produto ali.</p>
+        </li>
+        <li>
+          <span class="det__n">04</span>
+          <h3 class="det__t">Testado no atendimento, não no laboratório</h3>
+          <p class="det__d">Antes de virar produto de prateleira, ele entrou na rotina do studio, no acabamento de design, nanofios e brow lamination. Sobrancelha de cliente real, com tipo de fio diferente, em dia de calor e em dia de chuva. O que voltou dessas sessões é o que está no pote.</p>
+        </li>
+        <li>
+          <span class="det__n">05</span>
+          <h3 class="det__t">Pra quem é</h3>
+          <p class="det__d">Pra quem investe em design e quer que ele dure a semana inteira. Pra quem fez nanofios ou lamination e precisa manter o desenho no lugar entre as manutenções. E pra quem tem o fio rebelde, aquele que acorda apontando pra qualquer direção.</p>
+        </li>
+      </ol>
+
+      <div class="det__fecho">
+        <div>
+          <p class="eyebrow">Na prática</p>
+          <h2 class="mid" style="font-size:clamp(24px,3vw,40px)">Um passo,<br>dez segundos.</h2>
+          <p class="lead" style="margin-top:20px">Sobrancelha limpa, uma passada com a escovinha no sentido do crescimento, ajusta o desenho enquanto está maleável e pronto. É o último passo da maquiagem ou o único cuidado do dia, se você não usar mais nada.</p>
+        </div>
+        <dl class="det__quadro">
+          <dt>O que ele faz</dt>
+          <dd><b>Fixa</b> o desenho sem endurecer o fio, <b>nutre</b> o pelo enquanto segura e <b>hidrata</b> pra manter a maciez.</dd>
+          <dt>Quando usar</dt>
+          <dd>Todos os dias, de manhã. E logo depois do design, nanofios ou brow lamination, pra segurar o resultado.</dd>
+          <dt>Quem fez</dt>
+          <dd>Condessa Beauty Studio, especialista em sobrancelha, com loja física em Ipatinga.</dd>
+        </dl>
+      </div>
     </div>
   </section>
 
@@ -365,7 +443,6 @@ a{color:inherit}
           </div>
         </div>
       </div>
-      <p class="nota">Feedbacks sobre o atendimento e os produtos da loja como um todo. Não são especificamente sobre o Gel 3 em 1.</p>
     </div>
   </section>
 
